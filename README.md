@@ -1,27 +1,39 @@
-# FreelanceAppUi
+# Freelancer Project and Time Tracking Application UI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.2.
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-## Development server
+## Description
+The Freelancer Project and Time Tracking Application is a web-based application built using C# and Angular. It allows freelancers and project managers to efficiently manage projects, track tasks, and log time spent on various tasks.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Features
+- User authentication and authorization
+- Project management (create, edit, delete projects)
+- Task tracking (create, edit, delete tasks)
+- Time tracking (log time entries, timers)
+- Client management (add, edit, delete clients)
 
-## Code scaffolding
+## Technologies Used
+- Backend: C#, ASP.NET Core, Entity Framework Core
+- Frontend: Angular, TypeScript, HTML, CSS, Tailwind
+- Database: Coming soon
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Installation
+1. coming soon
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Usage
+1. coming soon
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Contributing
+Contributions are welcome! If you'd like to contribute to the project, please follow these steps:
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Commit your changes and push the branch to your fork.
+4. Submit a pull request, explaining your changes and their purpose.
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Acknowledgements
+- Coming soon
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
