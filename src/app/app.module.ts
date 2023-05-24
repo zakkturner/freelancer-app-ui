@@ -5,20 +5,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { AuthCardComponent } from './components/auth-card/auth-card.component';
+import { AuthCardComponent } from './components/auth/auth-card/auth-card.component';
+import { AuthLayoutComponent } from './components/auth/auth-layout/auth-layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    AuthCardComponent
+    AuthCardComponent,
+    AuthLayoutComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
