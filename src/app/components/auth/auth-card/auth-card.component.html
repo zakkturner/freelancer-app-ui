@@ -8,10 +8,11 @@
         >Sign Up</a
       >
     </div>
-    <div class="mb-4 relative">
+    <div class="mb-10 relative">
       <label
         class="block text-gray-700 text-base font-bold absolute bottom-0"
         for="username"
+        #usernameLabel
       >
         Username
       </label>
@@ -19,12 +20,15 @@
         class="appearance-none border-b rounded w-full py-2 px-3 text-gray-700 leading-tight"
         id="username"
         type="text"
+        (focus)="onInputFocus(usernameLabel)"
+        (focusout)="onInputFocusOut(usernameLabel)"
       />
     </div>
-    <div class="mb-6 relative">
+    <div class="mb-10 relative">
       <label
         class="block text-gray-700 text-base font-bold absolute bottom-0"
         for="password"
+        #passwordLabel
       >
         Password
       </label>
@@ -37,6 +41,8 @@
         class="appearance-none border-b rounded w-full py-2 px-3 text-gray-700 leading-tight"
         id="password"
         type="password"
+        (focus)="onInputFocus(passwordLabel)"
+        (focusout)="onInputFocusOut(passwordLabel)"
       />
       <!-- <p class="text-red-500 text-xs italic">Please choose a password.</p> -->
     </div>
