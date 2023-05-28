@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import gsap, { Power2, TweenMax } from 'gsap';
 
@@ -8,7 +9,12 @@ import gsap, { Power2, TweenMax } from 'gsap';
   styleUrls: ['./auth-card.component.css'],
 })
 export class AuthCardComponent implements OnInit {
-  constructor(private elementRef: ElementRef, private router: Router) {}
+  authForm!: FormGroup;
+  constructor(
+    private elementRef: ElementRef,
+    private router: Router,
+    private fb: FormBuilder
+  ) {}
 
   onInputFocus(labelElement: Element): void {
     gsap.to(labelElement, 0.3, { y: -35, ease: Power2.easeOut });
@@ -26,5 +32,21 @@ export class AuthCardComponent implements OnInit {
     return this.router.url === '/login';
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.initializeForm();
+  }
+  initializeForm() {
+    if (this.isRegisterRoute()) {
+      this.authForm = this.fb.group({
+        username: ['', Validators.required],
+        email: ['', Validators.required],
+        password: ['', Validators.required],
+      });
+    } else {
+      this.authForm = this.fb.group({
+        username: ['', Validators.required],
+        password: ['', Validators.required],
+      });
+    }
+  }
 }

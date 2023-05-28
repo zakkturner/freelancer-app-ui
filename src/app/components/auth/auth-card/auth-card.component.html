@@ -1,5 +1,8 @@
 <div class="w-full lg:w-96 max-w-md">
-  <form class="bg-white shadow-md rounded-3xl px-8 pt-6 pb-8 mb-4">
+  <form
+    [formGroup]="authForm"
+    class="bg-white shadow-md rounded-3xl px-8 pt-6 pb-8 mb-4"
+  >
     <div *ngIf="isLoginRoute()" class="flex items-center mb-10">
       <h1 class="text-2xl">Login /</h1>
       <a
@@ -28,8 +31,17 @@
         class="appearance-none border-b rounded w-full py-2 px-3 text-gray-700 leading-tight"
         id="username"
         type="text"
+        formControlName="username"
         (focus)="onInputFocus(usernameLabel)"
       />
+      <small
+        class="text-red-500 absolute right-0"
+        *ngIf="
+          authForm.controls['username'].dirty &&
+          authForm.hasError('required', 'username')
+        "
+        >*Username Required</small
+      >
     </div>
     <div class="mb-10 relative" *ngIf="isRegisterRoute()">
       <label
@@ -43,8 +55,17 @@
         class="appearance-none border-b rounded w-full py-2 px-3 text-gray-700 leading-tight"
         id="email"
         type="email"
+        formControlName="email"
         (focus)="onInputFocus(emailLabel)"
       />
+      <small
+        class="text-red-500 absolute right-0"
+        *ngIf="
+          authForm.controls['email'].dirty &&
+          authForm.hasError('required', 'email')
+        "
+        >*Email Required</small
+      >
     </div>
     <div class="mb-2 relative">
       <label
@@ -63,9 +84,17 @@
         class="appearance-none border-b rounded w-full py-2 px-3 text-gray-700 leading-tight"
         id="password"
         type="password"
+        formControlName="password"
         (focus)="onInputFocus(passwordLabel)"
       />
-
+      <small
+        class="text-red-500 absolute right-0"
+        *ngIf="
+          authForm.controls['password'].dirty &&
+          authForm.hasError('required', 'password')
+        "
+        >*Password Required</small
+      >
       <!-- <p class="text-red-500 text-xs italic">Please choose a password.</p> -->
     </div>
     <div class="mb-10">
