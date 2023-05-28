@@ -1,11 +1,19 @@
 <div class="w-full lg:w-96 max-w-md">
   <form class="bg-white shadow-md rounded-3xl px-8 pt-6 pb-8 mb-4">
-    <div class="flex items-center mb-10">
+    <div *ngIf="isLoginRoute()" class="flex items-center mb-10">
       <h1 class="text-2xl">Login /</h1>
       <a
-        href="/signup"
+        href="/register"
         class="ml-2 hover:text-soft-orange ease-in-out duration-300 text-gray-400 text-base"
         >Sign Up</a
+      >
+    </div>
+    <div *ngIf="isRegisterRoute()" class="flex items-center mb-10">
+      <h1 class="text-2xl">Sign Up /</h1>
+      <a
+        href="/login"
+        class="ml-2 hover:text-soft-orange ease-in-out duration-300 text-gray-400 text-base"
+        >Login</a
       >
     </div>
     <div class="mb-10 relative">
@@ -21,10 +29,24 @@
         id="username"
         type="text"
         (focus)="onInputFocus(usernameLabel)"
-        (focusout)="onInputFocusOut(usernameLabel)"
       />
     </div>
-    <div class="mb-10 relative">
+    <div class="mb-10 relative" *ngIf="isRegisterRoute()">
+      <label
+        class="block text-gray-700 text-base font-bold absolute bottom-0"
+        for="emailLabel"
+        #emailLabel
+      >
+        Email
+      </label>
+      <input
+        class="appearance-none border-b rounded w-full py-2 px-3 text-gray-700 leading-tight"
+        id="email"
+        type="email"
+        (focus)="onInputFocus(emailLabel)"
+      />
+    </div>
+    <div class="mb-2 relative">
       <label
         class="block text-gray-700 text-base font-bold absolute bottom-0"
         for="password"
@@ -42,12 +64,20 @@
         id="password"
         type="password"
         (focus)="onInputFocus(passwordLabel)"
-        (focusout)="onInputFocusOut(passwordLabel)"
       />
+
       <!-- <p class="text-red-500 text-xs italic">Please choose a password.</p> -->
     </div>
+    <div class="mb-10">
+      <a
+        *ngIf="isLoginRoute()"
+        href=""
+        class="text-sm hover:text-soft-orange ease-in-out duration-300"
+        >Forgot Password?</a
+      >
+    </div>
     <div class="flex items-center justify-between mb-20">
-      <div class="flex">
+      <div class="flex" [ngClass]="{ invisible: isRegisterRoute() }">
         <input type="checkbox" />
         <p class="text-sm ml-2">Stay logged in</p>
       </div>
@@ -55,7 +85,7 @@
         class="shadow-button bg-primary-teal hover:bg-light-sand hover:text-primary-teal text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline relative z-50 shadow"
         type="button"
       >
-        Login
+        {{ isLoginRoute() ? "Login" : "Register" }}
       </button>
     </div>
     <div class="mt-6 relative">

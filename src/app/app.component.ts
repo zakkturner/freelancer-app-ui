@@ -6,12 +6,13 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements AfterViewInit {
+// implements AfterViewInit
+export class AppComponent {
   title = 'freelance-app-ui';
 
   constructor(private router: Router) {}
 
-  ngAfterViewInit() {
-    this.router.navigate(['login']);
-  }
+  // ngAfterViewInit() {
+  //   this.router.navigate(['login']);
+  // }
 }
