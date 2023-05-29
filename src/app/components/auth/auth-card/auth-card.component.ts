@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import gsap, { Power2, TweenMax } from 'gsap';
+import ValidateForm from 'src/app/helpers/validateForm';
 
 @Component({
   selector: 'app-auth-card',
@@ -24,10 +25,6 @@ export class AuthCardComponent implements OnInit {
   onInputFocus(labelElement: Element): void {
     gsap.to(labelElement, 0.3, { y: -35, ease: Power2.easeOut });
   }
-  // onInputFocusOut(labelElement: Element): void {
-
-  //   gsap.to(labelElement, 0.3, { y: 0, ease: Power2.easeOut });
-  // }
 
   isRegisterRoute(): boolean {
     return this.router.url === '/register';
@@ -43,13 +40,15 @@ export class AuthCardComponent implements OnInit {
   initializeForm() {
     if (this.isRegisterRoute()) {
       this.authForm = this.fb.group({
-        username: ['', Validators.required],
+        firstname: ['', Validators.required],
+        lastname: ['', Validators.required],
         email: ['', Validators.required],
         password: ['', Validators.required],
+        confirmPassword: ['', Validators.required],
       });
     } else {
       this.authForm = this.fb.group({
-        username: ['', Validators.required],
+        email: ['', Validators.required],
         password: ['', Validators.required],
       });
     }
@@ -63,20 +62,8 @@ export class AuthCardComponent implements OnInit {
       console.log('Login: ', this.authForm.value);
     } else {
       //throw error
-      this.validateAllFormFields(this.authForm);
+      ValidateForm.validateAllFormFields(this.authForm);
       console.log('Not valid');
     }
-  }
-
-  // Loop through object and if invalid throw error for the field
-  private validateAllFormFields(formGroup: FormGroup) {
-    Object.keys(formGroup.controls).forEach((field) => {
-      const control = formGroup.get(field);
-      if (control instanceof FormControl) {
-        control.markAsDirty({ onlySelf: true });
-      } else if (control instanceof FormGroup) {
-        this.validateAllFormFields(control);
-      }
-    });
   }
 }

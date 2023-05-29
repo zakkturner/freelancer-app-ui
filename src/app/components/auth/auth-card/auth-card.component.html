@@ -19,35 +19,63 @@
         >Login</a
       >
     </div>
-    <div class="mb-10 relative">
+    <div class="mb-10 relative" *ngIf="isRegisterRoute()">
       <label
         class="block text-gray-700 text-base font-bold absolute bottom-0"
-        for="username"
-        #usernameLabel
+        for="firstname"
+        #firstNameLabel
       >
-        Username
+        First Name
       </label>
       <input
         class="appearance-none border-b rounded w-full py-2 px-3 text-gray-700 leading-tight"
-        id="username"
+        id="firstname"
         type="text"
-        formControlName="username"
-        (focus)="onInputFocus(usernameLabel)"
+        formControlName="firstname"
+        (focus)="onInputFocus(firstNameLabel)"
         [class.border-red-500]="
-          authForm.controls['username'].dirty &&
-          authForm.hasError('required', 'username')
+          authForm.controls['firstname'].dirty &&
+          authForm.hasError('required', 'firstname')
         "
       />
       <small
         class="text-red-500 absolute right-0"
         *ngIf="
-          authForm.controls['username'].dirty &&
-          authForm.hasError('required', 'username')
+          authForm.controls['firstname'].dirty &&
+          authForm.hasError('required', 'firstname')
         "
-        >*Username Required</small
+        >*First Name Required</small
       >
     </div>
     <div class="mb-10 relative" *ngIf="isRegisterRoute()">
+      <label
+        class="block text-gray-700 text-base font-bold absolute bottom-0"
+        for="firstname"
+        #lastNameLabel
+      >
+        Last Name
+      </label>
+      <input
+        class="appearance-none border-b rounded w-full py-2 px-3 text-gray-700 leading-tight"
+        id="firstname"
+        type="text"
+        formControlName="firstname"
+        (focus)="onInputFocus(lastNameLabel)"
+        [class.border-red-500]="
+          authForm.controls['lastname'].dirty &&
+          authForm.hasError('required', 'lastname')
+        "
+      />
+      <small
+        class="text-red-500 absolute right-0"
+        *ngIf="
+          authForm.controls['lastname'].dirty &&
+          authForm.hasError('required', 'lastname')
+        "
+        >*Last Name Required</small
+      >
+    </div>
+    <div class="mb-10 relative">
       <label
         class="block text-gray-700 text-base font-bold absolute bottom-0"
         for="emailLabel"
@@ -75,7 +103,7 @@
         >*Email Required</small
       >
     </div>
-    <div class="mb-2 relative">
+    <div class="mb-10 relative">
       <label
         class="block text-gray-700 text-base font-bold absolute bottom-0"
         for="password"
@@ -103,7 +131,35 @@
         "
         >*Password Required</small
       >
-      <!-- <p class="text-red-500 text-xs italic">Please choose a password.</p> -->
+    </div>
+    <div class="mb-2 relative" *ngIf="isRegisterRoute()">
+      <label
+        class="block text-gray-700 text-base font-bold absolute bottom-0"
+        for="password"
+        #confirmPasswordLabel
+      >
+        Confirm Password
+      </label>
+
+      <input
+        class="appearance-none border-b rounded w-full py-2 px-3 text-gray-700 leading-tight"
+        id="confirmPassword"
+        type="password"
+        formControlName="confirmPassword"
+        (focus)="onInputFocus(confirmPasswordLabel)"
+        [class.border-red-500]="
+          authForm.controls['confirmPassword'].dirty &&
+          authForm.hasError('required', 'confirmPassword')
+        "
+      />
+      <small
+        class="text-red-500 absolute right-0"
+        *ngIf="
+          authForm.controls['confirmPassword'].dirty &&
+          authForm.hasError('required', 'confirmPassword')
+        "
+        >*Please reenter your password</small
+      >
     </div>
     <div class="mb-10">
       <a
