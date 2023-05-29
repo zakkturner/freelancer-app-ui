@@ -1,5 +1,10 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import gsap, { Power2, TweenMax } from 'gsap';
 
@@ -48,5 +53,30 @@ export class AuthCardComponent implements OnInit {
         password: ['', Validators.required],
       });
     }
+  }
+
+  onSubmit() {
+    if (this.authForm.valid && this.isRegisterRoute()) {
+      console.log('Register: ', this.authForm.value);
+      //Send obj to database
+    } else if (this.authForm.valid && this.isLoginRoute()) {
+      console.log('Login: ', this.authForm.value);
+    } else {
+      //throw error
+      this.validateAllFormFields(this.authForm);
+      console.log('Not valid');
+    }
+  }
+
+  // Loop through object and if invalid throw error for the field
+  private validateAllFormFields(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach((field) => {
+      const control = formGroup.get(field);
+      if (control instanceof FormControl) {
+        control.markAsDirty({ onlySelf: true });
+      } else if (control instanceof FormGroup) {
+        this.validateAllFormFields(control);
+      }
+    });
   }
 }
