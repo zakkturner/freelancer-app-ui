@@ -8,6 +8,7 @@ import {
 import { Router } from '@angular/router';
 import gsap, { Power2, TweenMax } from 'gsap';
 import ValidateForm from 'src/app/helpers/validateForm';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-auth-card',
@@ -19,7 +20,8 @@ export class AuthCardComponent implements OnInit {
   constructor(
     private elementRef: ElementRef,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private auth: AuthService
   ) {}
 
   onInputFocus(labelElement: Element): void {
@@ -44,7 +46,7 @@ export class AuthCardComponent implements OnInit {
         lastname: ['', Validators.required],
         email: ['', Validators.required],
         password: ['', Validators.required],
-        confirmPassword: ['', Validators.required],
+        // confirmPassword: ['', Validators.required],
       });
     } else {
       this.authForm = this.fb.group({
@@ -56,10 +58,27 @@ export class AuthCardComponent implements OnInit {
 
   onSubmit() {
     if (this.authForm.valid && this.isRegisterRoute()) {
-      console.log('Register: ', this.authForm.value);
-      //Send obj to database
+      this.auth.signUp(this.authForm.value).subscribe({
+        next: (res) => {
+          alert(res.message);
+          this.authForm.reset();
+          this.router.navigate(['/login']);
+        },
+        error: (err) => {
+          alert(err.error.message);
+        },
+      });
     } else if (this.authForm.valid && this.isLoginRoute()) {
-      console.log('Login: ', this.authForm.value);
+      this.auth.login(this.authForm.value).subscribe({
+        next: (res) => {
+          alert(res.message);
+          this.authForm.reset();
+          this.router.navigate(['/dashboard']);
+        },
+        error: (err) => {
+          alert(err?.error.message);
+        },
+      });
     } else {
       //throw error
       ValidateForm.validateAllFormFields(this.authForm);

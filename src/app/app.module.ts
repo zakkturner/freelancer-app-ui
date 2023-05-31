@@ -8,6 +8,8 @@ import { RegisterComponent } from './pages/register/register.component';
 import { AuthCardComponent } from './components/auth/auth-card/auth-card.component';
 import { AuthLayoutComponent } from './components/auth/auth-layout/auth-layout.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -16,8 +18,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     RegisterComponent,
     AuthCardComponent,
     AuthLayoutComponent,
+    DashboardComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
