@@ -10,6 +10,7 @@ import { AuthLayoutComponent } from './components/auth/auth-layout/auth-layout.c
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { NavbarComponent } from './components/layout/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     AuthCardComponent,
     AuthLayoutComponent,
     DashboardComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
