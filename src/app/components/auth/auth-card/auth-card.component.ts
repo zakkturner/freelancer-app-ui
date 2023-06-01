@@ -1,8 +1,8 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import {
-  FormBuilder,
+  UntypedFormBuilder,
   FormControl,
-  FormGroup,
+  UntypedFormGroup,
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -16,11 +16,11 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./auth-card.component.css'],
 })
 export class AuthCardComponent implements OnInit {
-  authForm!: FormGroup;
+  authForm!: UntypedFormGroup;
   constructor(
     private elementRef: ElementRef,
     private router: Router,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private auth: AuthService
   ) {}
 
